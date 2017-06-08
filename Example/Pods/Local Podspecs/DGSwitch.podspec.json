@@ -1,0 +1,29 @@
+{
+  "name": "DGSwitch",
+  "version": "0.1.0",
+  "summary": "A short description of DGSwitch.",
+  "description": "Hello World",
+  "homepage": "https://github.com/dgyesbreghs/DGSwitch",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dylan Gyesbreghs": "dgyesbreghs@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/dgyesbreghs/DGSwitch.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/dgyesbreghs",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Source/**/*",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "PureLayout": [
+
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+PODS:
+  - DGSwitch (0.1.0):
+    - PureLayout
+  - PureLayout (3.0.2)
+
+DEPENDENCIES:
+  - DGSwitch (from `../`)
+
+EXTERNAL SOURCES:
+  DGSwitch:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DGSwitch: 2c4dc2ca3c09a94899ca11b085e4dfac6139497f
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+
+PODFILE CHECKSUM: f0a5ce3faeb80bb967cdae11c53950d9f6699985
+
+COCOAPODS: 1.2.1
