@@ -59,6 +59,10 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewIsTapped:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tapGestureRecognizer];
+    
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewIsMoving:)];
+    [self addGestureRecognizer:panGestureRecognizer];
+    
     self.userInteractionEnabled = YES;
 }
 
@@ -87,6 +91,29 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(hoverView:wasTapped:)]) {
         [self.delegate hoverView:self wasTapped:YES];
+    }
+}
+
+- (void)viewIsMoving:(UIPanGestureRecognizer *)sender
+{
+    [self bringSubviewToFront:sender.view];
+    CGPoint translatedPoint = [sender translationInView:sender.view.superview];
+    translatedPoint = CGPointMake(sender.view.center.x + translatedPoint.x, sender.view.center.y);
+    
+    [sender.view setCenter:translatedPoint];
+    [sender setTranslation:CGPointZero inView:sender.view];
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        BOOL moveView = NO;
+        if (translatedPoint.x > (self.bounds.size.width / 2)) {
+            moveView = self.state == kDGSwitchStateNo;
+        } else {
+            moveView = self.state == kDGSwitchStateYes;
+        }
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(hoverView:wasTapped:)]) {
+            [self.delegate hoverView:self wasTapped:moveView];
+        }
     }
 }
 
